@@ -16,7 +16,7 @@
 - **🛒 Dynamic Cart & Ordering System:**
   - Slide-over cart drawer with Dine-in, Takeout, and Delivery modes.
   - Automatic 5% GST computation and dynamic delivery fees.
-  - Instant WhatsApp checkout handoff (`wa.me/917023399845`) generating itemized orders.
+  - Instant WhatsApp checkout handoff (`wa.me/917014291523`) generating itemized orders.
 - **🌙 Rooftop & Poolside Table Reservations:**
   - Interactive reservation modal with date, 30-min time slots, guest counter, and seating selector (Rooftop, Poolside, Indoor).
   - One-click WhatsApp booking dispatch with instant confirmation.
@@ -109,7 +109,7 @@ the-time-out/
 
 - **Venue:** The Time Out Cafe & Restaurant
 - **Address:** Jaisinghpura Khor, Jaipur, Rajasthan
-- **WhatsApp / Phone:** +91 70233 99845
+- **WhatsApp / Phone:** +91 70142 91523
 - **Hours:** Open Daily 11:00 AM – 11:00 PM
 
 ---

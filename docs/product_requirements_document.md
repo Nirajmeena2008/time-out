@@ -33,7 +33,7 @@ To ensure a fast, scalable, and modern web experience, the following technology 
 
 * **Social Proof Integration:** Live feed or embedded widgets for Google Reviews and Instagram posts.
 
-* **Floating WhatsApp Button:** Direct chat link to the owner's mobile (+91 70233 99845) for quick inquiries.
+* **Floating WhatsApp Button:** Direct chat link to the owner's mobile (+91 70142 91523) for quick inquiries.
 
 ## 4. Services for Users (Customer Portal)
 

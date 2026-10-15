@@ -42,7 +42,7 @@ export default function CTABanner({ onReserveClick }: CTABannerProps) {
           </button>
 
           <a
-            href="https://wa.me/917023399845?text=Hi!%20I%20would%20like%20to%20reserve%20a%20table%20at%20The%20Time%20Out."
+            href="https://wa.me/917014291523?text=Hi!%20I%20would%20like%20to%20reserve%20a%20table%20at%20The%20Time%20Out."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-base btn-outline text-sm sm:text-base px-6 py-3.5 font-bold justify-center hover:bg-[#FAF2E1]"

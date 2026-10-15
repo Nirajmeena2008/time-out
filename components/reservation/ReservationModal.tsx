@@ -28,22 +28,47 @@ export default function ReservationModal({
     setMinDate(today);
   }, []);
 
-  // Close on Escape key
+  // Handle Escape key and mobile phone back button navigation
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+    if (!isOpen) return;
+
+    // Push history entry for mobile back button support
+    if (typeof window !== 'undefined' && window.location.hash !== '#reservation') {
+      window.history.pushState({ modal: 'reservation' }, '', '#reservation');
     }
+
+    const handlePopState = () => {
+      onClose();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (typeof window !== 'undefined' && window.location.hash === '#reservation') {
+          window.history.back();
+        } else {
+          onClose();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
     return () => {
+      window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, onClose]);
+
+  const handleManualClose = () => {
+    if (typeof window !== 'undefined' && window.location.hash === '#reservation') {
+      window.history.back();
+    } else {
+      onClose();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -74,7 +99,7 @@ export default function ReservationModal({
     lines.push('', 'Please confirm table availability. Thank you!');
 
     const text = encodeURIComponent(lines.join('\n'));
-    const url = `https://wa.me/917023399845?text=${text}`;
+    const url = `https://wa.me/917014291523?text=${text}`;
 
     setSubmitted(true);
     setTimeout(() => {
@@ -119,7 +144,7 @@ export default function ReservationModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
-      <div className="absolute inset-0" onClick={onClose} />
+      <div className="absolute inset-0" onClick={handleManualClose} />
 
       <div className="relative w-full max-w-lg bg-white rounded-3xl border-[2px] border-[#141413] shadow-[6px_8px_0px_#141413] z-10 max-h-[92vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
         {/* Header */}
@@ -135,7 +160,7 @@ export default function ReservationModal({
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleManualClose}
             className="w-8 h-8 rounded-full border border-[#141413] bg-white flex items-center justify-center text-[#141413] font-black text-sm hover:bg-[#E14825] hover:text-white transition-colors"
           >
             ✕

@@ -33,6 +33,36 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
     }
   }, [itemCount]);
 
+  // Handle mobile menu drawer phone back button navigation
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    if (typeof window !== 'undefined' && window.location.hash !== '#nav') {
+      window.history.pushState({ modal: 'mobile-menu' }, '', '#nav');
+    }
+
+    const handlePopState = () => {
+      setMobileMenuOpen(false);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [mobileMenuOpen]);
+
+  const toggleMobileMenu = () => {
+    if (mobileMenuOpen) {
+      if (typeof window !== 'undefined' && window.location.hash === '#nav') {
+        window.history.back();
+      } else {
+        setMobileMenuOpen(false);
+      }
+    } else {
+      setMobileMenuOpen(true);
+    }
+  };
+
   return (
     <header
       className={`sticky top-0 z-40 w-full transition-all duration-200 h-16 sm:h-[72px] ${
@@ -131,7 +161,7 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
 
           {/* Mobile Hamburger Button */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={toggleMobileMenu}
             type="button"
             className="md:hidden p-2 rounded-lg border-[1.5px] border-[#141413] bg-white text-[#141413] hover:bg-[#FAF2E1] flex items-center justify-center shrink-0"
             aria-label="Toggle Navigation"

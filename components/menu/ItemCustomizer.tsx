@@ -29,18 +29,58 @@ export default function ItemCustomizer({ item, onClose }: ItemCustomizerProps) {
   const unitPrice = selectedSize.price + addOnsTotal;
   const totalPrice = unitPrice * quantity;
 
+  // Handle mobile phone back button and Escape key
+  React.useEffect(() => {
+    // Push history entry for mobile back button support
+    if (typeof window !== 'undefined' && window.location.hash !== '#customize') {
+      window.history.pushState({ modal: 'customize' }, '', '#customize');
+    }
+
+    const handlePopState = () => {
+      onClose();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (typeof window !== 'undefined' && window.location.hash === '#customize') {
+          window.history.back();
+        } else {
+          onClose();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'unset';
+    };
+  }, [onClose]);
+
+  const handleManualClose = () => {
+    if (typeof window !== 'undefined' && window.location.hash === '#customize') {
+      window.history.back();
+    } else {
+      onClose();
+    }
+  };
+
   const handleAddToCart = () => {
     addItem(item, selectedSize, selectedAddOns, quantity);
     setAdded(true);
     setTimeout(() => {
-      onClose();
+      handleManualClose();
     }, 400);
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
       {/* Backdrop click area */}
-      <div className="absolute inset-0" onClick={onClose} />
+      <div className="absolute inset-0" onClick={handleManualClose} />
 
       {/* Modal Card */}
       <div className="relative w-full sm:max-w-md bg-white rounded-t-3xl sm:rounded-2xl border-[2px] border-[#141413] shadow-[4px_6px_0px_#141413] z-10 max-h-[90vh] flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-200">
@@ -59,7 +99,7 @@ export default function ItemCustomizer({ item, onClose }: ItemCustomizerProps) {
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={handleManualClose}
             className="w-8 h-8 rounded-full border border-[#141413] bg-white flex items-center justify-center text-[#141413] font-black text-sm hover:bg-[#E14825] hover:text-white transition-colors"
           >
             ✕

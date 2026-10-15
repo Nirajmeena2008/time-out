@@ -15,22 +15,47 @@ export default function CartDrawer() {
   const clearCart = useCartStore((state) => state.clearCart);
   const getWhatsAppCheckoutURL = useCartStore((state) => state.getWhatsAppCheckoutURL);
 
-  // Close on Escape key
+  // Handle Escape key and mobile phone back button navigation
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeCart();
-    };
-    if (isOpen) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
+    if (!isOpen) return;
+
+    // Push history entry for mobile back button support
+    if (typeof window !== 'undefined' && window.location.hash !== '#cart') {
+      window.history.pushState({ modal: 'cart' }, '', '#cart');
     }
+
+    const handlePopState = () => {
+      closeCart();
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (typeof window !== 'undefined' && window.location.hash === '#cart') {
+          window.history.back();
+        } else {
+          closeCart();
+        }
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    window.addEventListener('keydown', handleKeyDown);
+    document.body.style.overflow = 'hidden';
+
     return () => {
+      window.removeEventListener('popstate', handlePopState);
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
   }, [isOpen, closeCart]);
+
+  const handleManualClose = () => {
+    if (typeof window !== 'undefined' && window.location.hash === '#cart') {
+      window.history.back();
+    } else {
+      closeCart();
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -45,7 +70,7 @@ export default function CartDrawer() {
       {/* Backdrop */}
       <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
-        onClick={closeCart}
+        onClick={handleManualClose}
       />
 
       {/* Drawer Container */}
@@ -64,7 +89,7 @@ export default function CartDrawer() {
 
             <button
               type="button"
-              onClick={closeCart}
+              onClick={handleManualClose}
               className="w-8 h-8 rounded-full border border-[#141413] bg-white flex items-center justify-center text-[#141413] font-black text-sm hover:bg-[#E14825] hover:text-white transition-colors"
             >
               ✕
@@ -111,7 +136,7 @@ export default function CartDrawer() {
                 </p>
                 <button
                   type="button"
-                  onClick={closeCart}
+                  onClick={handleManualClose}
                   className="btn-base btn-primary text-xs px-5 py-2.5 font-bold"
                 >
                   Explore Menu

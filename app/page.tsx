@@ -18,6 +18,55 @@ export default function Home() {
   const openReservation = () => setIsReservationOpen(true);
   const closeReservation = () => setIsReservationOpen(false);
 
+  // Mobile Back Button Navigation Handler:
+  // Prevents website from quitting abruptly when user presses Android/iOS back button.
+  // Instead, gracefully closes modals or navigates back to previous section / top hero.
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Establish initial base state so back gesture stays within the site
+    if (!window.location.hash) {
+      window.history.replaceState({ section: 'hero' }, '', '#hero');
+    }
+
+    let hasPushedMenuState = false;
+
+    const handleScroll = () => {
+      // If user scrolls deep into catalog and is on #hero, create a back step to hero
+      if (window.scrollY > 500 && !hasPushedMenuState && window.location.hash === '#hero') {
+        hasPushedMenuState = true;
+        window.history.pushState({ section: 'menu' }, '', '#menu');
+      }
+    };
+
+    const handlePopState = () => {
+      const hash = window.location.hash;
+
+      // Ignore modal hashes (handled by individual modals)
+      if (['#cart', '#reservation', '#customize', '#nav'].includes(hash)) {
+        return;
+      }
+
+      if (hash === '#hero' || !hash) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        hasPushedMenuState = false;
+      } else {
+        const target = document.querySelector(hash);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF2E1] text-[#141413]">
       {/* Sticky Navigation Bar */}

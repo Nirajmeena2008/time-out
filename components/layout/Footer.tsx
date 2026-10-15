@@ -46,7 +46,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://wa.me/917023399845"
+                href="https://wa.me/917014291523"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-full bg-[#25D366] flex items-center justify-center text-white hover:scale-105 transition-transform"
@@ -103,8 +103,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-base text-[#F5C242]">📞</span>
-                <a href="tel:+917023399845" className="hover:text-white transition-colors font-semibold">
-                  +91 70233 99845
+                <a href="tel:+917014291523" className="hover:text-white transition-colors font-semibold">
+                  +91 70142 91523
                 </a>
               </li>
               <li className="flex items-center gap-2">

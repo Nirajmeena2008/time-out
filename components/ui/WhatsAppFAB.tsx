@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function WhatsAppFAB() {
   const whatsappUrl =
-    'https://wa.me/917023399845?text=' +
+    'https://wa.me/917014291523?text=' +
     encodeURIComponent(
       'Hi The Time Out! I would like to place an order or inquire about table reservation.'
     );

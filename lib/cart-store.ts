@@ -120,6 +120,6 @@ export const useCartStore = create<CartState>((set, get) => ({
     lines.push(`✅ *Total:* ₹${state.getTotal()}`);
 
     const text = encodeURIComponent(lines.join('\n'));
-    return `https://wa.me/917023399845?text=${text}`;
+    return `https://wa.me/917014291523?text=${text}`;
   },
 }));
