@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+/* ============================================================
+   The Time Out — Design System Variables
+   Warm Retro-Modern / Neo-Brutalist Food Aesthetic
+   ============================================================ */
+
+@theme {
+  /* Surfaces */
+  --color-cream-primary: #FAF2E1;
+  --color-cream-secondary: #F4E7CE;
+  --color-surface-white: #FFFFFF;
+  --color-surface-dark: #181715;
+
+  /* Brand & Accents */
+  --color-brand-red: #E14825;
+  --color-brand-red-hover: #C83817;
+  --color-accent-yellow: #F5C242;
+  --color-accent-yellow-soft: #FDE8B2;
+  --color-accent-green: #538D4E;
+
+  /* Dietary & Filter Chip Semantics */
+  --color-diet-veg-green: #108548;
+  --color-diet-nonveg-red: #E41D36;
+  --color-diet-egg-amber: #E67E22;
+  --color-filter-star-gold: #F59E0B;
+  --color-filter-offer-purple: #8B5CF6;
+  --color-filter-price-blue: #2563EB;
+
+  /* Typography Ink */
+  --color-ink-primary: #141413;
+  --color-ink-secondary: #5A5751;
+  --color-ink-inverse: #FFFFFF;
+  --color-ink-inverse-muted: #A39E93;
+
+  /* Font families */
+  --font-display: 'Barlow Condensed', 'Oswald', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'DM Sans', 'Inter', sans-serif;
+}
+
+:root {
+  /* Borders & Brutalist Shadows */
+  --border-thin: 1.5px solid #141413;
+  --border-thick: 2px solid #141413;
+  --shadow-pill: 2px 3px 0px #141413;
+  --shadow-card-hover: 4px 5px 0px #141413;
+  --shadow-soft-card: 0 10px 25px -5px rgba(20, 20, 19, 0.06);
+}
+
+/* ── Base Resets ────────────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink-primary);
+  background-color: var(--color-cream-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbar Hiding (Category Carousel & Filter Bar) ─────── */
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Neo-Brutalist Card Recipe ─────────────────────────────── */
+
+.card-brutal {
+  background: #FFFFFF;
+  border: 1.5px solid #141413;
+  border-radius: 14px;
+  padding: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-brutal:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 5px 0px #141413;
+}
+
+/* ── Button Variants ───────────────────────────────────────── */
+
+.btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: #E14825;
+  color: #FFFFFF;
+  border: 1.5px solid #141413;
+  box-shadow: 2px 3px 0px #141413;
+}
+
+.btn-primary:hover {
+  background: #C83817;
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0px 1px 0px #141413;
+}
+
+.btn-outline {
+  background: #FFFFFF;
+  color: #141413;
+  border: 1.5px solid #141413;
+}
+
+.btn-outline:hover {
+  background: #FAF2E1;
+}
+
+.btn-yellow {
+  background: #F5C242;
+  color: #141413;
+  border: 1.5px solid #141413;
+  box-shadow: 2px 3px 0px #141413;
+}
+
+.btn-yellow:hover {
+  transform: translateY(-1px);
+}
+
+.btn-dark {
+  background: #141413;
+  color: #FFFFFF;
+  border: 1.5px solid #141413;
+}
+
+.btn-dark:hover {
+  background: #2A2825;
+}
+
+/* ── Floating Badge Tilt ───────────────────────────────────── */
+
+.badge-tilt-left {
+  transform: rotate(-6deg);
+}
+
+.badge-tilt-right {
+  transform: rotate(5deg);
+}
+
+/* ── Line Clamp ────────────────────────────────────────────── */
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── WhatsApp FAB Pulse ────────────────────────────────────── */
+
+@keyframes pulse-gentle {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-pulse {
+  animation: pulse-gentle 2.5s ease-in-out infinite;
+}
+
+/* ── Cart Badge Bounce ─────────────────────────────────────── */
+
+@keyframes badge-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.badge-bounce {
+  animation: badge-bounce 0.3s ease-out;
+}
+
+/* ── Toast Slide In ────────────────────────────────────────── */
+
+@keyframes toast-slide {
+  0% { transform: translateY(100%); opacity: 0; }
+  10% { transform: translateY(0); opacity: 1; }
+  90% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+.toast-animate {
+  animation: toast-slide 2s ease-in-out forwards;
+}
+
+/* ── Continuous Marquee (Left to Right) ────────────────────── */
+
+@keyframes marquee-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 40s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-ltr:hover {
+  animation-play-state: paused;
+}
+
