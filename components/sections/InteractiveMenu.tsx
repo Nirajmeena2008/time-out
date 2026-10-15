@@ -34,19 +34,19 @@ export default function InteractiveMenu() {
   };
 
   return (
-    <section id="menu" className="bg-[#FAF2E1] py-16 md:py-24 border-b-[2px] border-[#141413]">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8 space-y-8">
+    <section id="menu" className="bg-[#FAF2E1] py-10 sm:py-16 md:py-24 border-b-[2px] border-[#141413]">
+      <div className="max-w-[1200px] mx-auto px-3.5 sm:px-6 md:px-8 space-y-6 sm:space-y-8">
         {/* Row 1: Section Header & Search Input */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-5">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E14825] text-white text-xs font-bold mb-2">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E14825] text-white text-[11px] sm:text-xs font-bold mb-2">
               <span>📖</span>
               <span>INTERACTIVE CATALOG</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-[#141413] tracking-tight">
+            <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#141413] tracking-tight">
               EXPLORE OUR COMPLETE MENU
             </h2>
-            <p className="text-sm sm:text-base text-[#5A5751] mt-1 font-medium">
+            <p className="text-xs sm:text-base text-[#5A5751] mt-1 font-medium">
               46+ pure vegetarian delicacies prepared fresh with premium ingredients
             </p>
           </div>

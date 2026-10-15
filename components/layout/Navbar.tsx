@@ -35,20 +35,19 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-200 ${
+      className={`sticky top-0 z-40 w-full transition-all duration-200 h-16 sm:h-[72px] ${
         isScrolled
           ? 'bg-[#FAF2E1]/95 backdrop-blur-md shadow-sm border-b border-[#141413]/10'
           : 'bg-[#FAF2E1] border-b border-[#141413]/8'
       }`}
-      style={{ height: '72px' }}
     >
-      <div className="max-w-[1200px] mx-auto h-full px-5 md:px-8 flex items-center justify-between">
+      <div className="max-w-[1200px] mx-auto h-full px-3.5 sm:px-6 md:px-8 flex items-center justify-between gap-2">
         {/* Brand Logo */}
-        <Link href="#hero" className="flex items-center gap-2 group">
-          <span className="font-display text-2xl md:text-3xl font-black tracking-tight text-[#141413]">
+        <Link href="#hero" className="flex items-center gap-1.5 sm:gap-2 group shrink-0 min-w-0">
+          <span className="font-display text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-[#141413] whitespace-nowrap leading-none">
             THE <span className="text-[#E14825]">TIME</span> OUT
           </span>
-          <span className="inline-block w-2 h-2 rounded-full bg-[#108548] animate-pulse" title="100% Pure Veg" />
+          <span className="inline-block w-2 h-2 rounded-full bg-[#108548] animate-pulse shrink-0" title="100% Pure Veg" />
         </Link>
 
         {/* Center Nav Links (Desktop) */}
@@ -86,12 +85,12 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Table Reservation Button */}
           <button
             onClick={onReserveClick}
             type="button"
-            className="hidden sm:inline-flex btn-base btn-outline hover:bg-[#FAF2E1]"
+            className="hidden sm:inline-flex btn-base btn-outline text-xs sm:text-sm px-3.5 py-1.5 sm:px-4 sm:py-2 hover:bg-[#FAF2E1]"
           >
             <span>📅</span>
             <span>Reserve Table</span>
@@ -101,11 +100,11 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
           <button
             onClick={toggleCart}
             type="button"
-            className="btn-base btn-primary relative group"
+            className="btn-base btn-primary relative group p-2.5 sm:px-4 sm:py-2 flex items-center gap-1.5"
             aria-label="View Cart"
           >
             <svg
-              className="w-4 h-4"
+              className="w-4 h-4 shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -118,10 +117,10 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
               />
             </svg>
-            <span className="hidden xs:inline">Cart</span>
+            <span className="hidden sm:inline font-bold text-xs sm:text-sm">Cart</span>
             {itemCount > 0 && (
               <span
-                className={`absolute -top-2 -right-2 bg-[#F5C242] text-[#141413] font-black text-[11px] px-2 py-0.5 rounded-full border border-[#141413] shadow-[1px_1px_0px_#141413] ${
+                className={`absolute -top-1.5 -right-1.5 sm:-top-2 sm:-right-2 bg-[#F5C242] text-[#141413] font-black text-[10px] sm:text-[11px] px-1.5 py-0.5 sm:px-2 sm:py-0.5 rounded-full border border-[#141413] shadow-[1px_1px_0px_#141413] ${
                   bouncing ? 'badge-bounce scale-110' : ''
                 }`}
               >
@@ -134,7 +133,7 @@ export default function Navbar({ onReserveClick }: NavbarProps) {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             type="button"
-            className="md:hidden p-2 rounded-lg border-[1.5px] border-[#141413] bg-white text-[#141413] hover:bg-[#FAF2E1]"
+            className="md:hidden p-2 rounded-lg border-[1.5px] border-[#141413] bg-white text-[#141413] hover:bg-[#FAF2E1] flex items-center justify-center shrink-0"
             aria-label="Toggle Navigation"
           >
             {mobileMenuOpen ? (

@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-[#181715] text-[#A39E93] pt-16 pb-8 border-t-[3px] border-[#141413]">
-      <div className="max-w-[1200px] mx-auto px-5 md:px-8">
+    <footer id="contact" className="bg-[#181715] text-[#A39E93] pt-12 sm:pt-16 pb-8 border-t-[3px] border-[#141413]">
+      <div className="max-w-[1200px] mx-auto px-3.5 sm:px-6 md:px-8">
         {/* 4-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#2A2825]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-8 sm:pb-12 border-b border-[#2A2825]">
           {/* Column 1: Brand & About */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">

@@ -49,7 +49,7 @@ export default function CartDrawer() {
       />
 
       {/* Drawer Container */}
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
         <div className="w-screen max-w-md bg-white border-l-[2px] border-[#141413] shadow-2xl flex flex-col justify-between animate-in slide-in-from-right duration-250">
           {/* Header */}
           <div className="px-5 py-4 border-b border-[#141413]/10 flex items-center justify-between bg-[#FAF2E1]">

@@ -55,33 +55,33 @@ export default function BestsellersMarquee({
   };
 
   return (
-    <div className="w-full bg-[#F4E7CE]/70 border-[1.5px] border-[#141413] rounded-2xl p-4 md:p-5 shadow-[3px_4px_0px_#141413] relative overflow-hidden">
+    <div className="w-full bg-[#F4E7CE]/70 border-[1.5px] border-[#141413] rounded-2xl p-3 sm:p-4 md:p-5 shadow-[3px_4px_0px_#141413] relative overflow-hidden">
       {/* Header Row */}
-      <div className="flex items-center justify-between mb-3.5 px-1">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E14825] text-white border border-[#141413] shadow-[1.5px_1.5px_0px_#141413] text-xs font-black uppercase">
+      <div className="flex items-center justify-between gap-2 mb-3 px-1">
+        <div className="flex items-center gap-2 min-w-0">
+          <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#E14825] text-white border border-[#141413] shadow-[1.5px_1.5px_0px_#141413] text-[10px] sm:text-xs font-black uppercase shrink-0">
             <span>🔥</span>
-            <span>BESTSELLERS CAROUSEL</span>
+            <span>BESTSELLERS</span>
           </span>
-          <span className="font-display font-black text-sm text-[#141413] hidden sm:inline uppercase tracking-wide">
-            Jaipur&apos;s Most-Loved Dishes
+          <span className="font-display font-black text-xs sm:text-sm text-[#141413] uppercase tracking-wide truncate">
+            Jaipur&apos;s Most-Loved
           </span>
         </div>
-        <span className="text-[11px] font-bold text-[#5A5751] bg-white/70 border border-[#141413]/20 px-2.5 py-0.5 rounded-full">
-          ⚡ Moves Left → Right • Hover to Pause
+        <span className="text-[10px] sm:text-[11px] font-bold text-[#5A5751] bg-white/70 border border-[#141413]/20 px-2 sm:px-2.5 py-0.5 rounded-full shrink-0">
+          ⚡ Left → Right
         </span>
       </div>
 
       {/* Marquee Container with edge masks */}
       <div className="relative overflow-hidden w-full py-1">
         {/* Left gradient fade */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#F4E7CE] to-transparent z-10" />
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-12 md:w-16 bg-gradient-to-r from-[#F4E7CE] to-transparent z-10" />
 
         {/* Right gradient fade */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#F4E7CE] to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 sm:w-12 md:w-16 bg-gradient-to-l from-[#F4E7CE] to-transparent z-10" />
 
         {/* Animated Marquee Strip */}
-        <div className="animate-marquee-ltr flex items-center gap-3.5">
+        <div className="animate-marquee-ltr flex items-center gap-3">
           {marqueeItems.map((item, idx) => {
             const lowestPrice = Math.min(...item.sizeOptions.map((s) => s.price));
             const hasMultipleSizes = item.sizeOptions.length > 1;
@@ -89,7 +89,7 @@ export default function BestsellersMarquee({
             return (
               <div
                 key={`${item.id}-${idx}`}
-                className="w-[270px] sm:w-[290px] shrink-0 bg-white border-[1.5px] border-[#141413] rounded-xl p-2.5 shadow-[2px_3px_0px_#141413] hover:-translate-y-1 hover:shadow-[3px_4px_0px_#141413] transition-all flex items-center gap-3 cursor-pointer group"
+                className="w-[250px] sm:w-[280px] shrink-0 bg-white border-[1.5px] border-[#141413] rounded-xl p-2 sm:p-2.5 shadow-[2px_3px_0px_#141413] hover:-translate-y-1 hover:shadow-[3px_4px_0px_#141413] transition-all flex items-center gap-2.5 sm:gap-3 cursor-pointer group"
                 onClick={() => onCustomize(item)}
               >
                 {/* Visual Thumbnail */}
